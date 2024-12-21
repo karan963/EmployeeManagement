@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+	<style>
+    /* Animation on table row */
+    .animated {
+        animation-duration: 0.8s;
+    }
+
+    /* Hover effect for buttons */
+    .hover-shadow:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Styling the add employee button */
+    .btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+        font-weight: bold;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #17a2b8;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #6c757d;
+    }
+
+    /* Custom styling for table */
+    .table-bordered {
+        border: 2px solid #dee2e6;
+    }
+
+    .thead-dark {
+        background-color: #343a40;
+        color: white;
+    }
+</style>
+</head>
+<body>
+	<!-- <div class="container my-2" align="center">
+
+		<h3>Employee List</h3>
+		<a th:href="@{/addnew}" class="btn btn-primary btn-sm mb-3">Add
+			Employee</a>
+		<table style="width: 90%" border="1"
+			class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email</th>
+					<th>Password</th>
+					<th>City</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee:${allemplist}">
+					<td th:text="${employee.name}"></td>
+					<td th:text="${employee.email}"></td>
+					<td><a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}"
+						class="btn btn-primary">Update</a> <a
+						th:href="@{/deleteEmployee/{id}(id=${employee.id})}"
+						class="btn btn-danger">Delete</a></td>
+				</tr>
+				<tr th:each="employee : ${employees}">
+					<td th:text="${employee.name}"></td>
+					<td th:text="${employee.email}"></td>
+					<td th:text="${employee.password}"></td>
+					<td th:text="${employee.city}"></td>
+					<td><input type="password" th:value="${employee.password}"
+						name="password" class="form-control" /></td>
+					<td><input type="text" th:value="${employee.city}" name="city"
+						class="form-control" /></td>
+					<td>
+						Update button links to a form for updating employee data
+						<a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}"
+						class="btn btn-primary">Update</a> Delete button to remove employee
+						<a th:href="@{/deleteEmployee/{id}(id=${employee.id})}"
+						class="btn btn-danger">Delete</a>
+						<a th:href="@{/profilePage/{id}(id=${employee.id})}"
+						class="btn btn-secondary">Profile</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div> -->
+	
+	
+	<div class="container my-4" align="center">
+
+    <h3 class="text-primary mb-4">Employee List</h3>
+    <a th:href="@{/addnew}" class="btn btn-success btn-lg mb-3 shadow-lg hover-shadow-lg">Add Employee</a>
+    
+    <table class="table table-striped table-bordered table-hover table-responsive-md shadow-sm" style="width: 90%; border-radius: 10px; background-color: #f8f9fa;">
+        <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>City</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="employee : ${employees}" class="animated fadeIn">
+                <td th:text="${employee.name}"></td>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.password}"></td>
+                <td th:text="${employee.city}"></td>
+                <td>
+                    <!-- Update button links to a form for updating employee data -->
+                    <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-info btn-sm mr-2 hover-shadow">Update</a>
+                    <!-- Delete button to remove employee -->
+                    <a th:href="@{/deleteEmployee/{id}(id=${employee.id})}" class="btn btn-danger btn-sm mr-2 hover-shadow">Delete</a>
+                    <!-- Profile button links to the employee's profile page -->
+                    <a th:href="@{/profilePage/{id}(id=${employee.id})}" class="btn btn-secondary btn-sm hover-shadow">Profile</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+	
+	
+</body>
+</html>
